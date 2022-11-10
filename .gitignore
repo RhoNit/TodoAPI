@@ -1,0 +1,4 @@
+__pycache__/
+todo-env/
+store.db-wal
+store.db-shm
