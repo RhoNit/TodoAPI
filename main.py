@@ -33,14 +33,6 @@ async def get_todo_by_id(todo_id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found: Todo is not created")
 
 
-@app.get("/todos", response_model=List[Todo_Pydantic], responses={404: {'model': HTTPNotFoundError}})
-async def get_all_todos():
-    try:
-        return await Todo_Pydantic.from_queryset(List[Todo])
-    except:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found: Todo is not created")
-
-
 @app.put("/todos/{todo_id}", response_model=Todo_Pydantic, responses={404: {'model': HTTPNotFoundError}})
 async def update_todo(todo_id: int, todo: TodoIn_Pydantic):
     await Todo.filter(id=todo_id).update(**todo.dict(exclude_unset=True))
