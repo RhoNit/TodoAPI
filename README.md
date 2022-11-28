@@ -1,2 +1,2 @@
-# FastAPI-starter-series-Todo-API
+# FastAPI starter series: Todo API
 Todo API in FastAPI
